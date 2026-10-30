@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#fce7f3">
+<title>Para mi Terroncito ♡</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
+:root{--pink:#f8b8d2;--rose:#d94f88;--deep:#8e315d;--cream:#fff8fb;--ink:#65364d;--soft:#ffe5ef}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);font-family:'DM Sans',sans-serif;background:linear-gradient(135deg,#fff8fb 0%,#ffeaf2 45%,#f9d8e7 100%);min-height:100vh;overflow-x:hidden}
+button{font:inherit;cursor:pointer;border:0}.serif{font-family:'Playfair Display',serif}
+.bg-orbs{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:-1}.orb{position:absolute;border-radius:50%;background:#fff;opacity:.38;filter:blur(2px);animation:float 12s ease-in-out infinite}.orb:nth-child(1){width:220px;height:220px;top:8%;left:-70px}.orb:nth-child(2){width:160px;height:160px;right:-40px;top:35%;animation-delay:-4s}.orb:nth-child(3){width:280px;height:280px;bottom:-130px;left:40%;animation-delay:-7s}
+@keyframes float{50%{transform:translate(25px,-30px) scale(1.08)}}@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}@keyframes pulse{50%{transform:scale(1.08)}}@keyframes drift{to{transform:translateY(-110vh) rotate(25deg);opacity:0}}
+.floating-heart{position:fixed;bottom:-35px;z-index:5;pointer-events:none;animation:drift linear forwards;color:#e77aa7;text-shadow:0 3px 12px #eaa3c3}
+.topbar{max-width:1080px;margin:auto;padding:20px 24px;display:flex;align-items:center;justify-content:space-between;gap:12px}.brand{font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--deep)}
+main{max-width:980px;margin:0 auto;padding:16px 22px 70px}.screen{display:none;animation:rise .7s ease both}.screen.active{display:block}.hero{text-align:center;min-height:72vh;display:flex;flex-direction:column;align-items:center;justify-content:center}.eyebrow{letter-spacing:.18em;text-transform:uppercase;font-size:.72rem;font-weight:700;color:#bd6b8e}.hero h1{font:600 clamp(2.8rem,8vw,5.5rem)/1.05 'Playfair Display',serif;color:var(--deep);margin:15px 0}.hero p{max-width:570px;line-height:1.8;color:#87546b;font-size:1.04rem}.flower{font-size:2.3rem;animation:pulse 2.4s infinite}.primary,.secondary{padding:14px 25px;border-radius:99px;font-weight:700;transition:.2s;box-shadow:0 9px 22px #d8759b35}.primary{background:linear-gradient(135deg,#e879a5,#c94f83);color:white}.primary:hover{transform:translateY(-3px);box-shadow:0 13px 26px #d8759b55}.secondary{background:#fff;color:var(--deep);border:1px solid #f0bfd2}.tiny{font-size:.82rem;color:#a36b83;margin-top:14px}
+.card{background:#ffffffc9;border:1px solid #f4cbdc;border-radius:28px;padding:clamp(22px,5vw,42px);box-shadow:0 20px 60px #a94e7520;backdrop-filter:blur(10px);margin:22px auto;max-width:780px}.center{text-align:center}.card h2{font:600 clamp(2rem,5vw,3.1rem) 'Playfair Display',serif;color:var(--deep);margin:8px 0 12px}.card p{line-height:1.85}.question-actions{display:flex;justify-content:center;gap:15px;flex-wrap:wrap;margin:28px 0 12px;min-height:58px}.yes{background:#d9548b;color:white;padding:15px 38px;border-radius:99px;font-weight:700;box-shadow:0 8px 20px #d9548b45}.no{background:#fff;border:1px solid #e9b8cd;color:#a54b70;padding:14px 30px;border-radius:99px;font-weight:700;position:relative}.note{min-height:28px;color:#b54d7a;font-weight:600}
+.progress{display:flex;justify-content:center;gap:7px;margin:18px}.dot{width:8px;height:8px;border-radius:99px;background:#edc5d6}.dot.on{width:24px;background:#d85e91}
+.photo-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:22px}.photo-slot{border:2px solid #e9a9c4;border-radius:20px;background:#fff7fb;overflow:hidden;text-align:center}.photo-slot img{display:block;width:100%;height:240px;object-fit:cover}.photo-caption{display:block;padding:13px;color:#a75c7b}
+.letter{font:400 1.08rem/2 'Playfair Display',serif;color:#75445c;white-space:pre-line}.promise{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:24px 0}.promise div{background:#fff3f8;border-radius:18px;padding:18px 12px;text-align:center}.promise b{display:block;color:#a83f70;margin:8px 0}.memory{font-size:1.5rem}
+.final-heart{font-size:4rem;animation:pulse 1.6s infinite}.coupon{border:2px dashed #df80a6;background:#fff5f9;border-radius:22px;padding:24px;margin:20px auto;max-width:480px}.coupon h3{font:600 1.8rem 'Playfair Display',serif;color:#a83f70;margin:8px}.footer{text-align:center;color:#a76c85;font-size:.8rem;margin-top:45px}
+@media(max-width:600px){.topbar{padding:16px}.photo-grid{grid-template-columns:1fr}.photo-slot{min-height:240px}.promise{grid-template-columns:1fr}.hero{min-height:67vh}}
+</style>
+</head>
+<body>
+<div class="bg-orbs"><i class="orb"></i><i class="orb"></i><i class="orb"></i></div>
+<header class="topbar">
+  <div class="brand">♡ Para mi Terroncito</div>
+</header>
+<audio id="audio" src="cancion.mp3" autoplay loop preload="auto"></audio>
+<main>
+  <section class="screen active" id="welcome">
+    <div class="hero">
+      <div class="flower">🌷 ♡ 🌸</div>
+      <div class="eyebrow">Hecho con muchísimo amor</div>
+      <h1 class="serif">Hola, mi<br>Terroncito</h1>
+      <p>Preparé algo pequeñito para ti. No es perfecto, pero cada detalle está hecho pensando en nosotros.</p>
+      <button class="primary" onclick="show('question')">Tengo algo que preguntarte ♡</button>
+      <div class="tiny">Un rinconcito de internet solo para ti.</div>
+    </div>
+  </section>
+
+  <section class="screen" id="question">
+    <div class="progress"><i class="dot on"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i></div>
+    <div class="card center">
+      <div class="flower">🥺💗</div>
+      <div class="eyebrow">Una pregunta desde mi corazón</div>
+      <h2>¿Me perdonas,<br>Terroncito?</h2>
+      <p>Quiero que sepas que lo nuestro me importa muchísimo. Me gustaría tener la oportunidad de escucharte, mejorar y demostrarte con hechos cuánto te amo.</p>
+      <div class="question-actions">
+        <button class="yes" onclick="show('letter')">Sí, te perdono ♡</button>
+        <button class="no" id="noBtn" onclick="noMessage()">No 😭</button>
+      </div>
+      <div class="note" id="noMessage" aria-live="polite"></div>
+      <div class="tiny">No tienes que responder por compromiso. Quiero que lo sientas de verdad. ♡</div>
+    </div>
+  </section>
+
+  <section class="screen" id="letter">
+    <div class="progress"><i class="dot on"></i><i class="dot on"></i><i class="dot"></i><i class="dot"></i></div>
+    <div class="card">
+      <div class="center"><div class="eyebrow">Unas palabras para ti</div><h2>Lo que quiero que sepas</h2><div class="memory">💌</div></div>
+      <p class="letter" id="letterText">Te amo muchísimo, mi corazón. Vas a ver el cambio en mí, porque yo no quiero alejarme de tu lado. Eres la mujer de mi vida, con la que quiero construir un futuro y, si me lo permites, pasar toda mi vida.
+
+Te dije que me quería casar contigo, y esa promesa sigue en pie. Sueño con que algún día nos casemos y tengamos hijos. Quiero trabajar en todo lo que debo mejorar, no solo decirlo, sino demostrártelo con mis acciones.
+
+No espero que olvides lo que pasó de un momento a otro. Quiero escucharte, entender cómo te sentiste y construir contigo una relación en la que los dos nos sintamos queridos, respetados y acompañados.
+
+Te amo, mi Terroncito de azúcar. ♡</p>
+      <div class="center"><button class="primary" onclick="show('photos')">Nuestros recuerdos →</button></div>
+    </div>
+  </section>
+
+  <section class="screen" id="photos">
+    <div class="progress"><i class="dot on"></i><i class="dot on"></i><i class="dot on"></i><i class="dot"></i></div>
+    <div class="card">
+      <div class="center"><div class="eyebrow">Pequeños momentos, mucho amor</div><h2>Nuestros recuerdos 📸</h2><p>Algunos momentos especiales que guardo con mucho cariño.</p></div>
+      <div class="photo-grid">
+        <div class="photo-slot"><img src="fotos/recuerdo1.jpg" alt="Nuestro recuerdo uno"><b class="photo-caption">La primera vez que me mandaste una foto cuando te corriste</b></div>
+        <div class="photo-slot"><img src="fotos/recuerdo2.jpg" alt="Nuestro recuerdo dos"><b class="photo-caption">Tu carita Linda</b></div>
+        <div class="photo-slot"><img src="fotos/recuerdo3.jpg" alt="Nuestro recuerdo tres"><b class="photo-caption">Tus ojitos</b></div>
+        <div class="photo-slot"><img src="fotos/recuerdo4.jpg" alt="Nuestro recuerdo cuatro"><b class="photo-caption">Cuando me hiciste una cartita</b></div>
+      </div>
+      <div class="center" style="margin-top:25px"><button class="primary" onclick="show('promises')">Hay algo más que quiero decirte →</button></div>
+    </div>
+  </section>
+
+  <section class="screen" id="promises">
+    <div class="progress"><i class="dot on"></i><i class="dot on"></i><i class="dot on"></i><i class="dot on"></i></div>
+    <div class="card">
+      <div class="center"><div class="eyebrow">Más que palabras</div><h2>Quiero demostrártelo</h2><p>Estas son pequeñas cosas que quiero cuidar cada día:</p></div>
+      <div class="promise">
+        <div><span class="memory">👂</span><b>Escucharte</b><small>Tomarme el tiempo para entender cómo te sientes.</small></div>
+        <div><span class="memory">🤍</span><b>Respetarte</b><small>Cuidar mis palabras y nuestras diferencias.</small></div>
+        <div><span class="memory">🌱</span><b>Mejorar</b><small>Ser constante y respaldar mis promesas con hechos.</small></div>
+      </div>
+      <div class="center"><p>También quiero que podamos hablar con sinceridad de lo que ambos necesitamos. Nuestro amor merece cuidado de los dos.</p><button class="primary" onclick="show('final')">Abrir tu regalito 🎁</button></div>
+    </div>
+  </section>
+
+  <section class="screen" id="final">
+    <div class="card center">
+      <div class="final-heart">💗</div>
+      <div class="eyebrow">Para ti, hoy y siempre</div>
+      <h2>Te elijo, mi Terroncito</h2>
+      <p>Gracias por llegar hasta aquí. Quiero que nuestro futuro esté lleno de momentos bonitos, conversaciones sinceras, risas y mucho amor.</p>
+      <div class="coupon">
+        <div class="memory">🎀 🌷 🎀</div>
+        <h3>Un vale por una cita juntitos</h3>
+        <p>Una salida especial, abrazos sin apuro y tiempo de calidad para nosotros. Tú eliges el día. ♡</p>
+      </div>
+      <p class="letter">Te amo muchísimo,<br>mi Terroncito de azúcar. ♡</p>
+      <button class="secondary" onclick="show('welcome')">Volver a empezar ↺</button>
+    </div>
+  </section>
+  <div class="footer">Hecho con cariño, especialmente para Terroncito ♡</div>
+</main>
+<script>
+const screens=[...document.querySelectorAll('.screen')];
+function show(id){screens.forEach(s=>s.classList.toggle('active',s.id===id));window.scrollTo({top:0,behavior:'smooth'});if(id==='final')celebrate();}
+let noCount=0;
+const messages=['¿Ya no amas a tu Terroncito de azúcar? 😭','Piénsalo un poquito, mi niña 🥺','Mi corazoncito está pidiendo otra oportunidad 💗','No quiero presionarte; solo quería sacarte una sonrisa.'];
+function noMessage(){noCount++;document.getElementById('noMessage').textContent=messages[Math.min(noCount-1,messages.length-1)];const b=document.getElementById('noBtn');if(noCount<4){const x=(Math.random()*100)-50;const y=(Math.random()*28)-14;b.style.transform=`translate(${x}px,${y}px)`;}else{b.style.transform='none';}}
+function heart(){const el=document.createElement('div');el.className='floating-heart';el.textContent=['♡','♥','🌸','💗'][Math.floor(Math.random()*4)];el.style.left=Math.random()*100+'vw';el.style.fontSize=(16+Math.random()*22)+'px';el.style.animationDuration=(5+Math.random()*5)+'s';document.body.appendChild(el);setTimeout(()=>el.remove(),10000);}
+let celebration;
+function celebrate(){for(let i=0;i<22;i++)setTimeout(heart,i*100);if(celebration)clearInterval(celebration);celebration=setInterval(heart,850);}
+setInterval(()=>{if(Math.random()>.35)heart();},2400);
+const audio=document.getElementById('audio');
+function playMusic(){
+  audio.play().catch(error=>{
+    if(error.name==='NotAllowedError'){
+      document.addEventListener('pointerdown',()=>{
+        audio.play().catch(playError=>console.error('No se pudo reproducir cancion.mp3:',playError));
+      },{once:true});
+    }else{
+      console.error('No se pudo reproducir cancion.mp3:',error);
+    }
+  });
+}
+playMusic();
+</script>
+</body>
+</html>
