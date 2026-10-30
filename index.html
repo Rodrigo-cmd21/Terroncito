@@ -13,7 +13,7 @@ button{font:inherit;cursor:pointer;border:0}.serif{font-family:'Playfair Display
 .bg-orbs{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:-1}.orb{position:absolute;border-radius:50%;background:#fff;opacity:.38;filter:blur(2px);animation:float 12s ease-in-out infinite}.orb:nth-child(1){width:220px;height:220px;top:8%;left:-70px}.orb:nth-child(2){width:160px;height:160px;right:-40px;top:35%;animation-delay:-4s}.orb:nth-child(3){width:280px;height:280px;bottom:-130px;left:40%;animation-delay:-7s}
 @keyframes float{50%{transform:translate(25px,-30px) scale(1.08)}}@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}@keyframes pulse{50%{transform:scale(1.08)}}@keyframes drift{to{transform:translateY(-110vh) rotate(25deg);opacity:0}}
 .floating-heart{position:fixed;bottom:-35px;z-index:5;pointer-events:none;animation:drift linear forwards;color:#e77aa7;text-shadow:0 3px 12px #eaa3c3}
-.topbar{max-width:1080px;margin:auto;padding:20px 24px;display:flex;align-items:center;justify-content:space-between;gap:12px}.brand{font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--deep)}
+.topbar{max-width:1080px;margin:auto;padding:20px 24px;display:flex;align-items:center;justify-content:space-between;gap:12px}.brand{font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--deep)}.music-toggle{padding:10px 16px}
 main{max-width:980px;margin:0 auto;padding:16px 22px 70px}.screen{display:none;animation:rise .7s ease both}.screen.active{display:block}.hero{text-align:center;min-height:72vh;display:flex;flex-direction:column;align-items:center;justify-content:center}.eyebrow{letter-spacing:.18em;text-transform:uppercase;font-size:.72rem;font-weight:700;color:#bd6b8e}.hero h1{font:600 clamp(2.8rem,8vw,5.5rem)/1.05 'Playfair Display',serif;color:var(--deep);margin:15px 0}.hero p{max-width:570px;line-height:1.8;color:#87546b;font-size:1.04rem}.flower{font-size:2.3rem;animation:pulse 2.4s infinite}.primary,.secondary{padding:14px 25px;border-radius:99px;font-weight:700;transition:.2s;box-shadow:0 9px 22px #d8759b35}.primary{background:linear-gradient(135deg,#e879a5,#c94f83);color:white}.primary:hover{transform:translateY(-3px);box-shadow:0 13px 26px #d8759b55}.secondary{background:#fff;color:var(--deep);border:1px solid #f0bfd2}.tiny{font-size:.82rem;color:#a36b83;margin-top:14px}
 .card{background:#ffffffc9;border:1px solid #f4cbdc;border-radius:28px;padding:clamp(22px,5vw,42px);box-shadow:0 20px 60px #a94e7520;backdrop-filter:blur(10px);margin:22px auto;max-width:780px}.center{text-align:center}.card h2{font:600 clamp(2rem,5vw,3.1rem) 'Playfair Display',serif;color:var(--deep);margin:8px 0 12px}.card p{line-height:1.85}.question-actions{display:flex;justify-content:center;gap:15px;flex-wrap:wrap;margin:28px 0 12px;min-height:58px}.yes{background:#d9548b;color:white;padding:15px 38px;border-radius:99px;font-weight:700;box-shadow:0 8px 20px #d9548b45}.no{background:#fff;border:1px solid #e9b8cd;color:#a54b70;padding:14px 30px;border-radius:99px;font-weight:700;position:relative}.note{min-height:28px;color:#b54d7a;font-weight:600}
 .progress{display:flex;justify-content:center;gap:7px;margin:18px}.dot{width:8px;height:8px;border-radius:99px;background:#edc5d6}.dot.on{width:24px;background:#d85e91}
@@ -27,6 +27,7 @@ main{max-width:980px;margin:0 auto;padding:16px 22px 70px}.screen{display:none;a
 <div class="bg-orbs"><i class="orb"></i><i class="orb"></i><i class="orb"></i></div>
 <header class="topbar">
   <div class="brand">♡ Para mi Terroncito</div>
+  <button class="secondary music-toggle" id="musicToggle" type="button" aria-pressed="false">Activar música ♫</button>
 </header>
 <audio id="audio" src="cancion.mp3" autoplay loop preload="auto"></audio>
 <main>
@@ -127,17 +128,37 @@ let celebration;
 function celebrate(){for(let i=0;i<22;i++)setTimeout(heart,i*100);if(celebration)clearInterval(celebration);celebration=setInterval(heart,850);}
 setInterval(()=>{if(Math.random()>.35)heart();},2400);
 const audio=document.getElementById('audio');
-function playMusic(){
-  audio.play().catch(error=>{
-    if(error.name==='NotAllowedError'){
-      document.addEventListener('pointerdown',()=>{
-        audio.play().catch(playError=>console.error('No se pudo reproducir cancion.mp3:',playError));
-      },{once:true});
-    }else{
-      console.error('No se pudo reproducir cancion.mp3:',error);
-    }
-  });
+const musicToggle=document.getElementById('musicToggle');
+function updateMusicButton(){
+  const isPlaying=!audio.paused;
+  musicToggle.textContent=isPlaying?'Pausar música ♫':'Activar música ♫';
+  musicToggle.setAttribute('aria-pressed',String(isPlaying));
 }
+async function playMusic(){
+  try{
+    await audio.play();
+    updateMusicButton();
+  }catch(error){
+    updateMusicButton();
+    if(error.name!=='NotAllowedError')console.error('No se pudo reproducir cancion.mp3:',error);
+  }
+}
+function handleFirstInteraction(event){
+  if(event.target instanceof Element&&event.target.closest('#musicToggle'))return;
+  document.removeEventListener('pointerdown',handleFirstInteraction);
+  document.removeEventListener('keydown',handleFirstInteraction);
+  playMusic();
+}
+musicToggle.addEventListener('click',()=>{
+  document.removeEventListener('pointerdown',handleFirstInteraction);
+  document.removeEventListener('keydown',handleFirstInteraction);
+  if(audio.paused)playMusic();
+  else{audio.pause();updateMusicButton();}
+});
+audio.addEventListener('play',updateMusicButton);
+audio.addEventListener('pause',updateMusicButton);
+document.addEventListener('pointerdown',handleFirstInteraction);
+document.addEventListener('keydown',handleFirstInteraction);
 playMusic();
 </script>
 </body>

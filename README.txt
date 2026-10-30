@@ -10,8 +10,7 @@ Cómo abrir:
 
 Personalización:
 - Las fotos se agregan desde la propia página usando los espacios de fotografía.
-- Para la música, selecciona un archivo de audio desde el control "Música".
-- Para que otra persona escuche una canción al abrir la web, agrega el archivo de audio al proyecto
-  y configura su ruta en el HTML; los navegadores normalmente bloquean el autoplay con sonido.
+- La canción está en "cancion.mp3". Los navegadores pueden bloquear la reproducción automática;
+  la música comenzará con la primera interacción y también puedes usar el botón "Activar música".
 
 El proyecto funciona como una página estática y no requiere instalar dependencias.
